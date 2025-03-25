@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
 from accounts.forms import SignUpForm
 from django.views.generic import TemplateView
-from django.contrib.auth import logout
+from django import forms
 
 # Create your views here.
 
@@ -37,11 +37,8 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["username"] = self.request.user.username if self.request.user.is_authenticated else None
         return context
+    
 
-class CustomLogoutView(View):
-    def get(self, request):
-        logout(request)
-        return redirect('/')
 
     
 

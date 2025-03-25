@@ -46,14 +46,6 @@
             font-size: 1rem;
             margin-left: 15px;
         }
-
-        .auth-links button {
-            color: white;   
-            background-color: #444;
-            border: none;
-            padding-left: 1em;
-            cursor: pointer;
-        }
         .container {
             text-align: center;
             padding: 40px;
@@ -78,6 +70,14 @@
             list-style: none;
             align-items: center;
         }
+
+        button {
+            background-color: #444;
+            border: 0;
+            margin-left: 10px;
+            cursor: pointer;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -91,16 +91,14 @@
         </ul>
         <div class="auth-links">
             {% if user.is_authenticated %}
-            <li>환영합니다. {{ request.user.username }}님!</li>
-            <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">
-                    로그아웃
-                </button>   
-            </form>
+                <li>환영합니다. {{ request.user.username }}님!</li>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">로그아웃</button>
+                </form>
             {% else %}
-                <a href="{% url 'login' %}">로그인</a>
-                <a href="{% url 'signup' %}">회원가입</a>
+                <a href="/login">로그인</a>
+                <a href="/signup">회원가입</a>
             {% endif %}
             
         </div>

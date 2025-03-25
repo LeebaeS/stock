@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1p^qskn^o@ppmj#mk-i+l#w$9txu1fzt6d0k^*z1r08$k_+p2*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
+ALLOWED_HOSTS = ['127.0.0.1:8000', 'localhost']
 
 
 # Application definition
@@ -116,7 +116,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"  # 로그인 후 이동할 페이지
 LOGOUT_REDIRECT_URL = "/"
