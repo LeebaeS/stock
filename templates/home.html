@@ -1,199 +1,223 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
 
-    <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>CodePen - Velo Slider</title>
-     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:400,700'>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:300,400,600'><link rel="stylesheet" href="./style.css">
-  
-    <style>
-        /* 내비게이션 바 기본 스타일 */
-        .navbar {
-            background-color: #a8e6cf; /* 연두색 계열 */
-        }
+  <title>CodePen - Velo Slider</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:400,700'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:300,400,600'>
+  <link rel="stylesheet" href="./style.css">
 
-        /* 드롭다운 메뉴 숨기기 */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-            min-width: 160px;
-            z-index: 1000;
-            max-width: 100%; /* 화면을 넘지 않도록 최대 너비 설정 */
-            right: 0; /* 오른쪽으로 붙이기 */
-            left: auto; /* 기본 left 제거 */
-        }
+  <style>
+    /* 내비게이션 바 기본 스타일 */
+    .navbar {
+      background-color: #831b1b;      /* 연두색 계열 */
+      position: fixed;      /* 헤더를 화면에 고정 */
+      top: 0;      /* 헤더의 위치를 화면 상단으로 설정 */
+      width: 100%;      /* 화면 너비를 전체로 설정 */
+      z-index: 1000;      /* 다른 요소 위에 표시되도록 설정 */
+      padding: 30px;
 
-        /* 드롭다운 메뉴 항목 스타일 */
-        .dropdown-item {
-            padding: 8px 20px;
-            color: #333;
-            text-decoration: none;
-        }
 
-        /* 드롭다운 메뉴 항목 hover 효과 */
-        .dropdown-item:hover {
-            background-color: #ddd;
-        }
 
-        /* 드롭다운 버튼이 활성화될 때 드롭다운 메뉴 표시 */
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
+    }
 
-        /* 드롭다운 버튼 스타일 */
-        .dropdown-toggle {
-            cursor: pointer;
-        }
+    /* 드롭다운 메뉴 숨기기 */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+      min-width: 160px;
+      z-index: 1000;
+      max-width: 100%;
+      /* 화면을 넘지 않도록 최대 너비 설정 */
+      right: 0;
+      /* 오른쪽으로 붙이기 */
+      left: auto;
+      /* 기본 left 제거 */
+    }
 
-        .navbar-nav .dropdown {
-            position: relative;
-        }
-    </style>
+    /* 드롭다운 메뉴 항목 스타일 */
+    .dropdown-item {
+      padding: 8px 20px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    /* 드롭다운 메뉴 항목 hover 효과 */
+    .dropdown-item:hover {
+      background-color: #ddd;
+    }
+
+    /* 드롭다운 버튼이 활성화될 때 드롭다운 메뉴 표시 */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* 드롭다운 버튼 스타일 */
+    .dropdown-toggle {
+      cursor: pointer;
+    }
+
+    .navbar-nav .dropdown {
+      position: relative;
+    }
+  </style>
 </head>
+
 <body>
-    <!-- 내비게이션 바 시작 -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">MySite</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">  <!-- 왼쪽 메뉴 항목 -->
-                    <li class="nav-item me-3">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item me-3">
-                      <a class="nav-link active" aria-current="page" href="#">Intro</a>
-                    </li>
-                    <li class="nav-item me-3">
-                      <a class="nav-link active" aria-current="page" href="#">Category</a>
-                    </li>
-                    <li class="nav-item me-3">
-                      <a class="nav-link active" aria-current="page" href="#">Customer Service</a>
-                </ul>
+  <!-- 내비게이션 바 시작 -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MySite</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto"> <!-- 왼쪽 메뉴 항목 -->
+          <li class="nav-item me-3">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item me-3">
+            <a class="nav-link active" aria-current="page" href="#">Intro</a>
+          </li>
+          <li class="nav-item me-3">
+            <a class="nav-link active" aria-current="page" href="#">Category</a>
+          </li>
+          <li class="nav-item me-3">
+            <a class="nav-link active" aria-current="page" href="#">Customer Service</a>
+        </ul>
 
-                <!-- 오른쪽 메뉴 항목 (Reset Password, 로그인, 회원가입) -->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item me-3">
-                        <a class="nav-link" href="{% url 'password_reset' %}">Reset Password</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false">
-                            User
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'signup' %}">Sign Up</a></li>
-                            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- 내비게이션 바 끝 -->
-
-    <!-- 페이지 내용 시작 -->
-    <div class="container mt-4">
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the home page content.</p>
-    </div>
-    <!-- 페이지 내용 끝 -->
-
-    <!-- Bootstrap JS 파일 (옵션) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <main role="main">
-
-        <!-- Slider -->
-        <section class="velo-slides" data-velo-slider="on" data-velo-theme="light">
-      
-          <!-- Slide -->
-          <section class="velo-slide">
-            
-            <!-- Pretitle Hint -->
-            <span class="velo-slider__hint"><span><span>Check Them Bldgs</span></span></span> 
-            <!-- Slide BG -->
-            <div class="velo-slide__bg">      
-              <!-- Img1 -->
-              <figure class="velo-slide__figure" style="background-image:url('./image/child1.jpg')"></figure>
-            </div>
-          
-            <!-- Header -->
-            <header class="velo-slide__header">
-              <h3 class="velo-slide__title"><span class="oh"><span>The Name Is</span></span><span class="oh"><span>Stephen Scaff</span></span></h3>
-              <p class="velo-slide__text"><span class="oh"><span>I'm a Creative Developer currently building fine internet goods at the Seattle Branding + Interactive firm, Urban Influence.</span></span></p>
-              <span class="velo-slide__btn"><a class="btn-draw btn--white" href="#"><span class="btn-draw__text"><span>View Work</span></span></a></span>
-            </header>
-          </section>
-      
-          <!-- Slide -->
-          <section class="velo-slide">
-            <!-- Pretitle Hint -->
-            <span class="velo-slider__hint"><span><span>What's up Playas</span></span></span> 
-            <!-- Slide BG -->
-            <div class="velo-slide__bg">
-              <!-- Img2 -->
-              <figure class="velo-slide__figure" style="background-image: url(https://cdn.imweb.me/thumbnail/20241228/24628d49d6cf0.jpg)"></figure>
-            </div>
-          
-            <!-- Header -->
-            <header class="velo-slide__header">
-              <h3 class="velo-slide__title"><span class="oh"><span>Another Day</span></span><span class="oh"><span>Another Slide</span></span></h3>
-              <p class="velo-slide__text"><span class="oh"><span>This slider component thing uses Velocity for enhance animation performance. Nav slides via scroll, click or arrow keys.</span></span></p>
-              <span class="velo-slide__btn"><a class="btn-draw btn--white" href="#/"><span class="btn-draw__text"><span>View Project</span></span></a></span>
-            </header>
-          </section>
-          
-          <!-- Slide - with Video -->
-          <section class="velo-slide">
-            <!-- Pretitle Hint -->
-            <span class="velo-slider__hint"><span><span>Urban Influence</span></span></span> 
-            <!-- Slide BG -->
-            <div class="velo-slide__bg">
-              <!-- Img3 -->
-              <figure class="velo-slide__figure" style="background-image: url(https://www.humanrights.go.kr/upload_file/images/000017/Ni0wMw==.jpg)"></figure>
-              <div class="velo-slide__vid-wrap">
-                <video autoplay="" class="velo-slide__vid" loop="" poster="">
-                  <!-- <source src="http://uiclients.com/assets/videos/ui-chaun.mp4" type="video/mp4"> Wait, are you still using IE? Bruv. Go get Chrome, or kick rocks.</video> -->
-              </div>
-            </div>
-            <!-- Header -->
-            <header class="velo-slide__header">
-              <h3 class="velo-slide__title"><span class="oh"><span>Pigeon Wisdom</span></span><span class="oh"><span>Agency Site</span></span></h3>
-              <p class="velo-slide__text"><span class="oh"><span>Live from the Coop, SOTD rocking, folio and storytelling joint for the Pigeon Wizzy squad. Coo Coo.</span></span></p>
-              <span class="velo-slide__btn"><a class="btn-draw btn--white" href="http://urbaninfluence.com"><span class="btn-draw__text"><span>View Project</span></span></a></span>
-            </header>
-          </section>
-          
-          <!-- Slides Nav -->
-          <nav class="velo-slides-nav">
-            <ul class="velo-slides-nav__list">
-              <li>
-                <a class="js-velo-slides-prev velo-slides-nav__prev inactive" href="#0"><i class="icon-up-arrow"></i></a>
-              </li>
-              <li>
-                <a class="js-velo-slides-next velo-slides-nav__next" href="#"><i class="icon-down-arrow"></i></a>
-              </li>
+        <!-- 오른쪽 메뉴 항목 (Reset Password, 로그인, 회원가입) -->
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item me-3">
+            <a class="nav-link" href="{% url 'password_reset' %}">Reset Password</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false">
+              User
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'signup' %}">Sign Up</a></li>
+              <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
             </ul>
-          </nav>
-        </section>
-      </main>
-      <!-- partial -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.3.0/velocity.js'></script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.3.0/velocity.ui.js'></script><script  src="./script.js"></script>
-      
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- 내비게이션 바 끝 -->
+
+  <!-- 페이지 내용 시작 -->
+
+  <!-- Bootstrap JS 파일 (옵션) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <main role="main">
+
+    <!-- Slider -->
+    <section class="velo-slides" data-velo-slider="on" data-velo-theme="light">
+
+      <!-- Slide -->
+      <section class="velo-slide">
+
+        <!-- Pretitle Hint -->
+        <span class="velo-slider__hint"><span><span>Check Them Bldgs</span></span></span>
+        <!-- Slide BG -->
+        <div class="velo-slide__bg">
+          <!-- Img1 -->
+          <figure class="velo-slide__figure" style="background-image: url('{% static "image/child1.jpg" %}');"></figure>
+        </div>
+
+        <!-- Header -->
+        <header class="velo-slide__header">
+          <h3 class="velo-slide__title"><span class="oh"><span>The Name Is</span></span><span class="oh"><span>Stephen
+                Scaff</span></span></h3>
+          <p class="velo-slide__text"><span class="oh"><span>I'm a Creative Developer currently building fine internet
+                goods at the Seattle Branding + Interactive firm, Urban Influence.</span></span></p>
+          <span class="velo-slide__btn"><a class="btn-draw btn--white" href="#"><span class="btn-draw__text"><span>View
+                  Work</span></span></a></span>
+        </header>
+      </section>
+
+      <!-- Slide -->
+      <section class="velo-slide">
+        <!-- Pretitle Hint -->
+        <span class="velo-slider__hint"><span><span>What's up Playas</span></span></span>
+        <!-- Slide BG -->
+        <div class="velo-slide__bg">
+          <!-- Img2 -->
+          <figure class="velo-slide__figure"
+            style="background-image: url(https://cdn.imweb.me/thumbnail/20241228/24628d49d6cf0.jpg)"></figure>
+        </div>
+
+        <!-- Header -->
+        <header class="velo-slide__header">
+          <h3 class="velo-slide__title"><span class="oh"><span>Another Day</span></span><span class="oh"><span>Another
+                Slide</span></span></h3>
+          <p class="velo-slide__text"><span class="oh"><span>This slider component thing uses Velocity for enhance
+                animation performance. Nav slides via scroll, click or arrow keys.</span></span></p>
+          <span class="velo-slide__btn"><a class="btn-draw btn--white" href="#/"><span class="btn-draw__text"><span>View
+                  Project</span></span></a></span>
+        </header>
+      </section>
+
+      <!-- Slide - with Video -->
+      <section class="velo-slide">
+        <!-- Pretitle Hint -->
+        <span class="velo-slider__hint"><span><span>Urban Influence</span></span></span>
+        <!-- Slide BG -->
+        <div class="velo-slide__bg">
+          <!-- Img3 -->
+          <figure class="velo-slide__figure"
+            style="background-image: url(https://www.humanrights.go.kr/upload_file/images/000017/Ni0wMw==.jpg)">
+          </figure>
+          <div class="velo-slide__vid-wrap">
+            <video autoplay="" class="velo-slide__vid" loop="" poster="">
+              <!-- <source src="http://uiclients.com/assets/videos/ui-chaun.mp4" type="video/mp4"> Wait, are you still using IE? Bruv. Go get Chrome, or kick rocks.</video> -->
+          </div>
+        </div>
+        <!-- Header -->
+        <header class="velo-slide__header">
+          <h3 class="velo-slide__title"><span class="oh"><span>Pigeon Wisdom</span></span><span class="oh"><span>Agency
+                Site</span></span></h3>
+          <p class="velo-slide__text"><span class="oh"><span>Live from the Coop, SOTD rocking, folio and storytelling
+                joint for the Pigeon Wizzy squad. Coo Coo.</span></span></p>
+          <span class="velo-slide__btn"><a class="btn-draw btn--white" href="http://urbaninfluence.com"><span
+                class="btn-draw__text"><span>View Project</span></span></a></span>
+        </header>
+      </section>
+
+      <!-- Slides Nav -->
+      <nav class="velo-slides-nav">
+        <ul class="velo-slides-nav__list">
+          <li>
+            <a class="js-velo-slides-prev velo-slides-nav__prev inactive" href="#0"><i class="icon-up-arrow"></i></a>
+          </li>
+          <li>
+            <a class="js-velo-slides-next velo-slides-nav__next" href="#"><i class="icon-down-arrow"></i></a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.3.0/velocity.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.3.0/velocity.ui.js'></script>
+  <script src="./script.js"></script>
+
 </body>
+
 </html>
