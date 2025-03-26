@@ -118,7 +118,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # 문자열 경로 설정
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
+# 문자열 경로 설정
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
