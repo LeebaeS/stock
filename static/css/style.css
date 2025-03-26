@@ -413,7 +413,7 @@ a {
 
 .velo-slides[data-velo-theme=light] {
   background: #ffffff;
-  /* border: 1em solid #c5cac5; */
+  border: 1em solid #ffffff;
 }
 .velo-slides[data-velo-theme=light] .velo-slide {
   margin-top: -1em;

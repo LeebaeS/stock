@@ -38,5 +38,6 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('home.html/', views.home, name='home'),  # home.html로 직접 연결
     path('intro.html/', views.intro, name='intro'),  # home.html로 직접 연결
+    path('', include('pred.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])

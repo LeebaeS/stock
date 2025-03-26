@@ -54,3 +54,4 @@ def home(request):
     return render(request, 'home.html') 
 def intro(request):
     return render(request, 'projectintro/intro.html') 
+

@@ -19,15 +19,43 @@
   <style>
     /* 내비게이션 바 기본 스타일 */
     .navbar {
-      background-color: #ffffff;      /* 연두색 계열 */
+      background-color: transparent;      /* 연두색 계열 */
       position: fixed;      /* 헤더를 화면에 고정 */
       top: 0;      /* 헤더의 위치를 화면 상단으로 설정 */
       width: 100%;      /* 화면 너비를 전체로 설정 */
       z-index: 1000;      /* 다른 요소 위에 표시되도록 설정 */
       padding: 30px;
+      justify-content: center;  /* 네비바 내부 요소를 가운데 정렬 */
+      align-items: center; 
+    }
 
+    .navbar-brand {
+      /* font-style: italic; */
+      font-family: 'Arial', sans-serif;      /* 폰트 설정 */
+      font-size: 50px;      /* 폰트 크기 */
+      font-weight: 200;      /* 글씨 두께 */
+      text-transform: uppercase;      /* 대문자 변환 */
+      letter-spacing: 1px;      /* 글자 간격 */
+      color: #454343;      /* 기본 글자색 */
+      text-decoration: none;      /* 밑줄 제거 */
+      transition: color 0.3s ease;      /* 색 변경 애니메이션 */      
+    }
 
+    .navbar-brand:hover  {
+      color: #e8d0d0
+    }
+    .nav-link.active:hover  {
+      color: #e8d0d0
+    }
 
+    .nav-link.active {
+      font-family: 'Arial', sans-serif;            /* 폰트 설정 */
+      font-size: 20px;      /* 폰트 크기 */
+      font-weight: 100;      /* 글씨 두께 */
+      letter-spacing: 1px;      /* 글자 간격 */
+      color: #454343;      /* 기본 글자색 */
+      text-decoration: none;      /* 밑줄 제거 */
+      transition: color 0.3s ease;      /* 색 변경 애니메이션 */
     }
 
     /* 드롭다운 메뉴 숨기기 */
@@ -80,24 +108,28 @@
   <!-- 내비게이션 바 시작 -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/home.html">굿네이버스</a>
+      <a class="navbar-brand" href="/home.html">STC</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto"> <!-- 왼쪽 메뉴 항목 -->
-          <li class="nav-item me-3">
+        <ul class="navbar-nav mx-auto"> <!-- 왼쪽 메뉴 항목 -->
+          <li class="nav-item me-5">
             <a class="nav-link active" aria-current="page" href="/intro.html">프로젝트소개</a>
           </li>
-          <li class="nav-item me-3">
-            <a class="nav-link active" aria-current="page" href="#">아동학대예측</a>
+          <li class="nav-item me-5">
+            <a class="nav-link active" aria-current="page" href="/survey.html">아동학대예측</a>
           </li>
-          <li class="nav-item me-3">
+          <li class="nav-item me-5">
             <a class="nav-link active" aria-current="page" href="#">후원/참여</a>
           </li>
-          <li class="nav-item me-3">
+          <li class="nav-item me-5">
+            <a class="nav-link active" aria-current="page" href="#">게시판</a>
+          </li>
+          <li class="nav-item me">
             <a class="nav-link active" aria-current="page" href="#">문의페이지</a>
+          </li>
         </ul>
 
         <!-- 오른쪽 메뉴 항목 (Reset Password, 로그인, 회원가입) -->
@@ -144,7 +176,8 @@
         <header class="velo-slide__header">
           <h3 class="velo-slide__title"><span class="oh"><span>The Name Is</span></span><span class="oh"><span>Stephen
                 Scaff</span></span></h3>
-          <p class="velo-slide__text"><span class="oh"><span>I'm a Creative Developer currently building fine internetrun
+          <p class="velo-slide__text"><span class="oh"><span>I'm a Creative Developer currently building fine
+                internetrun
                 goods at the Seattle Branding + Interactive firm, Urban Influence.</span></span></p>
           <span class="velo-slide__btn"><a class="btn-draw btn--white" href="#"><span class="btn-draw__text"><span>View
                   Work</span></span></a></span>
